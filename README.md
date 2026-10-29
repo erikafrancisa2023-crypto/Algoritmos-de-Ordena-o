@@ -23,9 +23,7 @@ Os resultados mostram que o melhor algoritmo depende das características dos da
 ## Regras da função `escolher`
 
 A função `escolher` analisa as características da lista antes de selecionar um algoritmo.
-
 As regras utilizadas são:
-
 1. Listas com até 32 elementos: **Inserção**.
 2. Faixa de valores de até 100.000 e não superior a quatro vezes o tamanho da lista: **Contagem**.
 3. Listas com pelo menos 1.000 elementos e valores não negativos: **Base**.
