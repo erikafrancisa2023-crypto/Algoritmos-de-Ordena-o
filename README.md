@@ -22,7 +22,7 @@ Os resultados mostram que o melhor algoritmo depende das características dos da
 
 ## Regras da função `escolher`
 
-A função `escolher(v)` analisa as características da lista antes de selecionar um algoritmo.
+A função `escolher` analisa as características da lista antes de selecionar um algoritmo.
 
 As regras utilizadas são:
 
