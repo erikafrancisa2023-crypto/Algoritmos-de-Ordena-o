@@ -3,7 +3,6 @@
 # Tabela dos quatro cenários contra os seis métodos
 Os tempos estão em segundos e correspondem às medições realizadas no programa.
 | Cenário | Inserção | Intercalação | Quicksort | Híbrida | Contagem | Base |
-
 |---|---:|---:|---:|---:|---:|---:|
 | Chaves grandes | 5,381858 | 0,031036 | 0,020395 | **0,016492** | N/E | 0,028316 |
 | Faixa estreita | 5,053042 | 0,031997 | 0,005324 | 0,006028 | **0,001767** | 0,007771 |
