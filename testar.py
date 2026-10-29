@@ -1,4 +1,3 @@
-
 from algoritmos import (
     insercao,
     intercala_sort,
@@ -7,36 +6,48 @@ from algoritmos import (
     contagem,
     base
 )
-from escolher import escolher, ordenar
-metodos = [
-    ("Inserção", insercao),
-    ("Intercalação", intercala_sort),
-    ("Rápida", rapida),
-    ("Híbrida", hibrida),
-    ("Contagem", contagem),
-    ("Base", base)
-]
 
-testes = [
-    [],
-    [5],
-    [7, 7, 7, 7],
-    [1, 2, 3, 4, 5],
-    [5, 4, 3, 2, 1],
-    [-5, 3, -1, 0, 2, -10]
-]
+def escolher(v):
+    n = len(v)
+    if n <= 32:
+        return "insercao"
 
-for lista in testes:
-    esperado = sorted(lista)
-    for nome, metodo in metodos:
-        resultado = metodo(lista)
-        if resultado != esperado:
-            print("ERRO:", nome, lista, resultado)
-        else:
-            print("OK:", nome, lista)
-    resultado_inteligente = ordenar(lista)
-    if resultado_inteligente == esperado:
-        print("OK: Seletor inteligente", escolher(lista))
+    menor = v[0]
+    maior = v[0]
+    fora_de_ordem = 0
+    for i in range(1, n):
+        if v[i] < menor:
+            menor = v[i]
+        if v[i] > maior:
+            maior = v[i]
+        if v[i] < v[i - 1]:
+            fora_de_ordem += 1
+
+    faixa = maior - menor + 1
+    proporcao = fora_de_ordem / (n - 1)
+
+    if faixa <= 100000 and faixa <= 4 * n:
+        return "contagem"
+    if n >= 1000 and menor >= 0:
+        return "base"
+    if proporcao <= 0.05:
+        return "insercao"
+    if n >= 100:
+        return "hibrida"
+    return "rapida"
+
+def ordenar(v):
+    metodo = escolher(v)
+    if metodo == "insercao":
+        resultado = insercao(v)
+    elif metodo == "intercala":
+        resultado = intercala_sort(v)
+    elif metodo == "rapida":
+        resultado = rapida(v)
+    elif metodo == "hibrida":
+        resultado = hibrida(v)
+    elif metodo == "contagem":
+        resultado = contagem(v)
     else:
-        print("ERRO: Seletor inteligente")
-    print("--------------------------")
+        resultado = base(v)
+    return resultado

@@ -1,4 +1,3 @@
-
 from algoritmos import (
     insercao,
     intercala_sort,
